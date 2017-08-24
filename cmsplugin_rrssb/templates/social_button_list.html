@@ -1,0 +1,26 @@
+{% load cms_tags sekizai_tags staticfiles %}
+
+{% addtoblock "css" %}
+    <link type="text/css" rel="stylesheet" href="{% static 'rrssb/css/rrssb.min.css' %}" />
+{% endaddtoblock %}
+
+<ul class="rrssb-buttons clearfix{% if instance.css_classes %} {{ instance.css_classes }}{% endif %}">
+    {% for plugin in instance.child_plugin_instances %}
+        {% render_plugin plugin %}
+    {% endfor %}
+</ul>
+
+{% addtoblock "js" %}
+    <script src="{% static 'rrssb/js/rrssb.min.js' %}"></script>
+{% endaddtoblock %}
+
+{% addtoblock "js" %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.rrssb-buttons').rrssb({
+                title: '{{ instance.share_title }}',
+                url: '{{ request.build_absolute_uri }}'
+            });
+        });
+    </script>
+{% endaddtoblock %}

@@ -1,0 +1,161 @@
+{% load sekizai_tags staticfiles i18n %}
+
+{% addtoblock "css" %}
+    <link type="text/css" rel="stylesheet" href="{% static 'fontawesome/css/font-awesome.min.css' %}" />
+{% endaddtoblock %}
+
+{% if instance.button_type == 'EM' %}
+    <li class="rrssb-email">
+        <a href="mailto:?subject=encode({{ instance.title }})&amp;body=encode({{ instance.description }})">
+            <span class="rrssb-icon">
+                <i class="fa fa-envelope-o"></i>
+            </span>
+            <span class="rrssb-text">email</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'PR' %}
+    <li class="rrssb-print">
+        <a href="javascript:window.print()">
+            <span class="rrssb-icon">
+                <i class="fa fa-print"></i>
+            </span>
+            <span class="rrssb-text">{% trans 'print' %}</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'FB' %}
+    <li class="rrssb-facebook">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}&amp;t=encode({{ instance.title }})" class="popup">
+            <span class="rrssb-icon">
+                <i class="fa fa-facebook"></i>
+            </span>
+            <span class="rrssb-text">facebook</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'IG' %}
+    <li class="rrssb-instagram">
+        <!-- Replace href with your URL  -->
+        <a href="http://instagram.com/dbox">
+            <span class="rrssb-icon">
+                <i class="fa fa-instagram"></i>
+            </span>
+            <span class="rrssb-text">instagram</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'TB' %}
+    <li class="rrssb-tumblr">
+        <a href="http://tumblr.com/share/link?url={{ request.build_absolute_uri }}">
+            <span class="rrssb-icon">
+                <i class="fa fa-tumblr"></i>
+            </span>
+            <span class="rrssb-text">tumblr</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'LI' %}
+    <li class="rrssb-linkedin">
+        <a href="http://www.linkedin.com/shareArticle?mini=true&amp;url={{ request.build_absolute_uri }}&amp;title=encode({{ instance.title }}&amp;summary=encode({{ instance.description }})" class="popup">
+            <span class="rrssb-icon">
+                <i class="fa fa-linkedin"></i>
+            </span>
+            <span class="rrssb-text">linkedin</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'TW' %}
+    <li class="rrssb-twitter">
+        <!-- Replace href with your Meta and URL information  -->
+        <a href="https://twitter.com/intent/tweet?text=encode({{ instance.description }})" class="popup">
+            <span class="rrssb-icon">
+                <i class="fa fa-twitter"></i>
+            </span>
+            <span class="rrssb-text">twitter</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'RD' %}
+    <li class="rrssb-reddit">
+        <a href="http://www.reddit.com/submit?url={{ request.build_absolute_uri }}&amp;title=encode({{ instance.title }})">
+            <span class="rrssb-icon">
+                <i class="fa fa-reddit"></i>
+            </span>
+            <span class="rrssb-text">reddit</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'VK' %}
+    <li class="rrssb-vk">
+        <a href="http://vk.com/share.php?url={{ request.build_absolute_uri }}" class="popup">
+            <span class="rrssb-icon">
+                <i class="fa fa-vk"></i>
+            </span>
+            <span class="rrssb-text">vk.com</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'HN' %}
+    <li class="rrssb-hackernews">
+        <a href="https://news.ycombinator.com/submitlink?u={{ request.build_absolute_uri }}&amp;t=encode({{ instance.title }})&amp;text=encode({{ instance.description }})">
+            <span class="rrssb-icon">
+                <i class="fa fa-hacker-news"></i>
+            </span>
+            <span class="rrssb-text">hackernews</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'G+' %}
+    <li class="rrssb-googleplus">
+        <a href="https://plus.google.com/share?url={{ request.build_absolute_uri }}" class="popup">
+            <span class="rrssb-icon">
+                <i class="fa fa-google-plus"></i>
+            <span class="rrssb-text">google+</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'PT' %}
+    <li class="rrssb-pinterest">
+        <!-- Replace href with your meta and URL information.  -->
+        <a href="http://pinterest.com/pin/create/button/?url={{ request.build_absolute_uri }}&amp;description=encode({{ instance.description }})">
+            <span class="rrssb-icon">
+                <i class="fa fa-pinterest"></i>
+            </span>
+            <span class="rrssb-text">pinterest</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'PK' %}
+    <li class="rrssb-pocket">
+        <a href="https://getpocket.com/save?url={{ request.build_absolute_uri }}">
+            <span class="rrssb-icon">
+                <i class="fa fa-get-pocket"></i>
+            </span>
+            <span class="rrssb-text">pocket</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'YT' %}
+    <li class="rrssb-youtube">
+        <a href="#">
+            <span class="rrssb-icon">
+                <i class="fa fa-youtube"></i>
+            </span>
+            <span class="rrssb-text">youtube</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'GH' %}
+    <li class="rrssb-github">
+        <a href="https://github.com/kni-labs/rrssb">
+            <span class="rrssb-icon">
+                <i class="fa fa-github"></i>
+            </span>
+            <span class="rrssb-text">github</span>
+        </a>
+    </li>
+{% elif instance.button_type == 'WA' %}
+    <li class="rrssb-whatsapp">
+        <a href="whatsapp://send?text={{ request.build_absolute_uri }}" data-action="share/whatsapp/share">
+            <span class="rrssb-icon">
+                <i class="fa fa-whatsapp"></i>
+            </span>
+            <span class="rrssb-text">Whatsapp</span>
+        </a>
+    </li>
+{% endif %}
+
+{% addtoblock "js" %}
+    <script type="text/javascript">
+        function encode(text) {
+            return encodeURIComponent(text).replace(/'/g,"%27").replace(/"/g,"%22");
+        }
+    </script>
+{% endaddtoblock %}
